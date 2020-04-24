@@ -5,10 +5,20 @@ async function initWorkout() {
     document
       .querySelector("a[href='/exercise?']")
       .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
-
+//*duration
+      let totalDuration = 0;
+      let durations = [];
+      lastWorkout.exercises.forEach(element => {
+        durations.push(element.duration);
+      });
+      function addDurations(item) {
+        totalDuration += item;
+      }
+      durations.forEach(addDurations);
+//*
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
-      totalDuration: lastWorkout.totalDuration,
+      totalDuration: totalDuration.totalDuration,
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises)
     };
