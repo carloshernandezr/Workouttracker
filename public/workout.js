@@ -18,7 +18,7 @@ async function initWorkout() {
 //*
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
-      totalDuration: totalDuration.totalDuration,
+      totalDuration: totalDuration,
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises)
     };
@@ -73,6 +73,8 @@ function renderWorkoutSummary(summary) {
 
     strong.textContent = workoutKeyMap[key];
     const textNode = document.createTextNode(`: ${summary[key]}`);
+    console.log(`: ${summary[key]}`);
+    
 
     p.appendChild(strong);
     p.appendChild(textNode);
